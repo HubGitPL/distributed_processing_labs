@@ -1,0 +1,6 @@
+gcc -c -Wall -fPIC invsqrt.c
+gcc -c -Wall -fPIC -O3 -ffast-math opt_invsqrt.c
+gcc invsqrt.o opt_invsqrt.o -shared -o lib_invsqrt.so -lm
+gcc -c test.c -o test.o
+gcc test.o -L. -l_invsqrt -o test.out
+./test.out 
